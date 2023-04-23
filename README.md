@@ -7,7 +7,7 @@ If you have any questions, suggestions or feedback, let me know in [PluralKit's 
 ## Development
 1. Clone this repository
 2. run `pnpm install`
-3. Create an .env file with the following values
+3. (Optional) create an .env file with the following values
     - `PUBLIC_API_BASE_URL`: the base url of the PK instance's api (you probably want `https://api.pluralkit.me/`)
     - `PUBLIC_DASHBOARD_BASE_URL`: the base url of this dashboard (`http://localhost:5173` in development)
     - `PUBLIC_REPOSITORY_URL`: the url linking to this project's git repository. Any blank value will default to PluralKit's repository
