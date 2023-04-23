@@ -1,38 +1,18 @@
-# create-svelte
+# PluralKit Dashboard
+This is the repository for the sveltekit rewrite of [PluralKit's offical dashboard](https://dash.pluralkit.me/). There's a live version over at https://pk.anomaly.icu/ that gets updated periodically.
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+## Contributing
+If you have any questions, suggestions or feedback, let me know in [PluralKit's support server](https://discord.gg/PczBt78). Please also discuss any potential contributions in the support server *first*, I'd hate to turn down an out-of-scope PR.
 
-## Creating a project
+## Development
+1. Clone this repository
+2. run `pnpm install`
+3. Create an .env file with the following values
+    - `PUBLIC_API_BASE_URL`: the base url of the PK instance's api (you probably want `https://api.pluralkit.me/`)
+    - `PUBLIC_DASHBOARD_BASE_URL`: the base url of this dashboard (`http://localhost:5173` in development)
+    - `PUBLIC_REPOSITORY_URL`: the url linking to this project's git repository. Any blank value will default to PluralKit's repository
+4. run `pnpm dev`
+5. Everything should be ready to go!
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+## License
+MIT, see [the `LICENSE` file](./LICENSE).
