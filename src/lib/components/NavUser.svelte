@@ -25,17 +25,17 @@
         </div>
     </span>
     <Dropdown class="w-44 z-20">
-        <DropdownItem href="/dash/abcde/s" class="hover:text-blue-600 dark:hover:text-blue-200" >
+        <DropdownItem href="/dash/system" class="hover:text-blue-600 dark:hover:text-blue-200" >
             <div class="flex items-center gap-2">
                 <IconArchive /> System
             </div>
         </DropdownItem>
-        <DropdownItem href="/dash/abcde/m" class="hover:text-blue-600 dark:hover:text-blue-200" >
+        <DropdownItem href="/dash/members" class="hover:text-blue-600 dark:hover:text-blue-200" >
             <div class="flex items-center gap-2">
                 <IconUsers /> Member
             </div>
         </DropdownItem>
-        <DropdownItem href="/dash/abcde/g" class="hover:text-blue-600 dark:hover:text-blue-200" >
+        <DropdownItem href="/dash/groups" class="hover:text-blue-600 dark:hover:text-blue-200" >
             <div class="flex items-center gap-2">
                 <IconBoxMultiple /> Groups
             </div>
