@@ -19,7 +19,7 @@
         href={baseurl} 
         class="rounded-r-none grow md:grow-0" 
         color={buttonColor("dash")}>
-        Dash
+        Overview
     </Button>
     <Button 
         href={baseurl + "system"} 
