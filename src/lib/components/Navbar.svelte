@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { Navbar, NavBrand, NavUl, NavLi, NavHamburger, Avatar, Dropdown, DropdownItem, DropdownDivider } from 'flowbite-svelte'
-    import { IconSquareRoundedPlus, IconBook, IconBrandDiscord, IconAdjustments, IconArchive, IconUsers, IconBoxMultiple, IconSun } from "@tabler/icons-svelte"
+    import { Navbar, NavBrand, NavUl, NavHamburger} from 'flowbite-svelte'
+    import { IconSquareRoundedPlus, IconBook, IconBrandDiscord} from "@tabler/icons-svelte"
 	import NavUser from './NavUser.svelte';
 
     const ulClass = "flex p-1 mt-1 items-center"
