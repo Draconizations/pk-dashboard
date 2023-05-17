@@ -9,7 +9,7 @@
 
 <div class={"flex flex-1 flex-col" + " " + data.theme}>
   <div class="bg-white dark:bg-gray-900 flex-1 flex flex-col">
-    <Navbar theme={data.theme} />
+    <Navbar theme={data.theme} user={data.user} />
       <div class="container mx-auto p-3">
         <slot />
       </div>

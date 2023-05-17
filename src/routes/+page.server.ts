@@ -6,11 +6,14 @@ import type { System } from "$lib/api/types";
 
 export const load: PageServerLoad = async ({ cookies }) => {
     const token = cookies.get("pk-token")
+    const savedUser = cookies.get("pk-user")
     
     let user: System | undefined
     let error: ApiError | undefined
 
-    if (token) {
+    if (savedUser) user = JSON.parse(savedUser)
+
+    if (token && !user) {
         await login(token, (u, e) => {
             user = u
             if (!u && e) {
@@ -23,7 +26,10 @@ export const load: PageServerLoad = async ({ cookies }) => {
                         path: "/"
                     })
                 }
-                
+            } else if (u) {
+                cookies.set("pk-user", JSON.stringify(u), {
+                    path: "/"
+                })
             }
         })
     }
@@ -57,8 +63,25 @@ export const actions: Actions = {
         cookies.set("pk-token", token as string, {
             path: "/"
         })
+        
+        await login(token as string, (u, e) => {
+            if (!u && e) {
+                if (e.type === ErrorType.InvalidToken) {
+                    cookies.delete("pk-token", {
+                        path: "/"
+                    })
+                    cookies.delete("pk-user", {
+                        path: "/"
+                    })
+                }
+            } else if (u) {
+                cookies.set("pk-user", JSON.stringify(u), {
+                    path: "/"
+                })
+            }
+        })
 
-        throw redirect(302, "/")
+        throw redirect(302, request.headers.get("referer") ?? "/")
     },
 
     logout: async ({ cookies}) => {

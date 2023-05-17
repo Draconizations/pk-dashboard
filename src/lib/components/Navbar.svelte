@@ -2,6 +2,7 @@
     import { Navbar, NavBrand, NavUl, NavHamburger} from 'flowbite-svelte'
     import { IconSquareRoundedPlus, IconBook, IconBrandDiscord} from "@tabler/icons-svelte"
 	import NavUser from './NavUser.svelte';
+	import type { System } from '$lib/api/types';
 
     const ulClass = "flex p-1 mt-1 items-center"
     const ulClassSm = ulClass + " flex-row justify-center sm:space-x-8 sm:mt-0 sm:text-sm sm:font-medium"
@@ -12,6 +13,7 @@
     const divClassLg = divClass + " lg:block lg:w-auto"
 
     export let theme: string
+    export let user: System
 </script>
 
 <Navbar let:hidden let:toggle class="border-b border-gray-300 dark:border-gray-700 mb-5">
@@ -21,7 +23,7 @@
         </span>
     </NavBrand>
     <NavHamburger on:click={toggle} class="sm:hidden" />
-    <NavUser {toggle} {hidden} ulClass={ulClassSm} divClass={divClassSm} breakpoint="sm" {theme} />
+    <NavUser {toggle} {hidden} ulClass={ulClassSm} divClass={divClassSm} breakpoint="sm" {theme} {user} />
     <NavUl {hidden} ulClass={ulClassLg} divClass={divClassLg} >
         <a class="block py-2 pr-4 pl-3 lg:p-0 rounded lg:border-0 hover:text-blue-700 dark:hover:text-blue-200" href="https://discord.com/oauth2/authorize?client_id=466378653216014359&scope=bot%20applications.commands&permissions=536995904">
             <div class="flex items-center gap-2">
@@ -39,5 +41,5 @@
             </div>
         </a>
     </NavUl>
-    <NavUser {toggle} {hidden} ulClass={ulClassSm} divClass={divClassSm} breakpoint="lg" {theme} />
+    <NavUser {toggle} {hidden} ulClass={ulClassSm} divClass={divClassSm} breakpoint="lg" {theme} {user} />
 </Navbar>
