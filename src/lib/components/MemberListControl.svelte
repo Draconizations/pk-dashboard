@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { Card } from "flowbite-svelte";
     import { IconSearch } from "@tabler/icons-svelte";
 
 
@@ -8,6 +7,6 @@
 <h3 class="text-xl mb-2 text-gray-900 dark:text-gray-100">
     <IconSearch class="inline"/> Search Members
 </h3>
-<Card class="grow min-w-full">
-    
-</Card>
+<div class="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-4 text-gray-900 dark:text-gray-100">
+    what're you looking at??
+</div>
