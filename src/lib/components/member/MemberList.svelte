@@ -7,7 +7,7 @@
     <ul>
         {#each members as member (member.uuid)}
             <li>
-                {member.name} ({member.id})
+                <b>{member.name}</b> ({member.id})
             </li>
         {/each}
     </ul>

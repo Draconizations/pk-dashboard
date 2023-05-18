@@ -11,9 +11,9 @@
 
 	export let listLength: number
 	export let pageLength: number
-
-	$: activePage = parseInt($page.url.searchParams.get('page') || '1')
-	let pageAmount = Math.ceil(listLength / pageLength)
+    export let activePage: number
+    
+	$: pageAmount = Math.ceil(listLength / pageLength)
 
 	$: pages = createPaginationArray(pageAmount, activePage)
 
@@ -53,13 +53,15 @@
             })
         }
 
-		if (pageAmount !== 1) {
+		if (pageAmount > 1) {
 			pages.push({
 				name: pageAmount.toString(),
 				href: getSearchParamUrl(pageAmount),
 				active: currentPage === pageAmount
 			})
 		}
+
+        if (activePage > pageAmount) activePage = 1
 
 		return pages
 	}
@@ -71,14 +73,14 @@
 	}
 
 	function previous() {
-		if (activePage !== 1) {
+		if (activePage > 1) {
 			goto(getSearchParamUrl(activePage - 1))
 			activePage = activePage - 1
 		}
 	}
 
 	function next() {
-		if (activePage !== pageAmount) {
+		if (activePage < pageAmount) {
 			goto(getSearchParamUrl(activePage + 1))
 			activePage = activePage + 1
 		}
