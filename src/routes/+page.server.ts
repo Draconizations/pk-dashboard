@@ -1,7 +1,7 @@
 import { fail, redirect } from "@sveltejs/kit";
 import type { Actions, PageServerLoad } from "./$types";
 import { login } from "$lib/api/functions";
-import { ErrorType, type ApiError } from "$lib/api";
+import type { ApiError } from "$lib/api";
 import type { System } from "$lib/api/types";
 
 export const load: PageServerLoad = async ({ cookies }) => {
@@ -14,24 +14,7 @@ export const load: PageServerLoad = async ({ cookies }) => {
     if (savedUser) user = JSON.parse(savedUser)
 
     if (token && !user) {
-        await login(token, (u, e) => {
-            user = u
-            if (!u && e) {
-                error = e
-                if (e.type === ErrorType.InvalidToken) {
-                    cookies.delete("pk-token", {
-                        path: "/"
-                    })
-                    cookies.delete("pk-user", {
-                        path: "/"
-                    })
-                }
-            } else if (u) {
-                cookies.set("pk-user", JSON.stringify(u), {
-                    path: "/"
-                })
-            }
-        })
+        await login(token as string, cookies)
     }
 
     return {
@@ -64,22 +47,7 @@ export const actions: Actions = {
             path: "/"
         })
         
-        await login(token as string, (u, e) => {
-            if (!u && e) {
-                if (e.type === ErrorType.InvalidToken) {
-                    cookies.delete("pk-token", {
-                        path: "/"
-                    })
-                    cookies.delete("pk-user", {
-                        path: "/"
-                    })
-                }
-            } else if (u) {
-                cookies.set("pk-user", JSON.stringify(u), {
-                    path: "/"
-                })
-            }
-        })
+        await login(token as string, cookies)
 
         throw redirect(302, request.headers.get("referer") ?? "/")
     },
