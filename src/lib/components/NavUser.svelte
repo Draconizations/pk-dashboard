@@ -1,6 +1,6 @@
 <script lang="ts">
     import { NavUl, NavHamburger, Avatar, Dropdown, DropdownItem, Tooltip } from 'flowbite-svelte'
-    import { IconAdjustments, IconArchive, IconUsers, IconBoxMultiple, IconSun, IconMoon } from "@tabler/icons-svelte"
+    import { IconAdjustments, IconArchive, IconUsers, IconBoxMultiple, IconSun, IconMoon, IconHome } from "@tabler/icons-svelte"
 	import type { System } from '$lib/api/types';
 
     export let hidden: boolean;
@@ -37,6 +37,11 @@
     </span>
     {#if user}
     <Dropdown class="w-44 z-20">
+        <DropdownItem href="/dash" class="hover:text-blue-600 dark:hover:text-blue-200" >
+            <div class="flex items-center gap-2">
+                <IconHome /> Overview
+            </div>
+        </DropdownItem>
         <DropdownItem href="/dash/system" class="hover:text-blue-600 dark:hover:text-blue-200" >
             <div class="flex items-center gap-2">
                 <IconArchive /> System
