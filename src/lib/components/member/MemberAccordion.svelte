@@ -16,7 +16,7 @@
 
 </script>
 
-<div class="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-4 text-gray-900 dark:text-gray-100 mb-3">
+<div class="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-4 text-gray-900 dark:text-gray-100 mb-2">
     <button on:click={toggle}>
         <div class="flex justify-between items-center">
             <div class="flex items-center text-lg">

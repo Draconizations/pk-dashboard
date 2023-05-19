@@ -7,7 +7,7 @@
 	const normalClass =
 		'text-gray-500 bg-white hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-none text-xs'
 	const activeClass =
-		'text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white rounded-none text-xs'
+		'text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-blue-700 dark:text-white rounded-none text-xs'
 
 	export let listLength: number
 	export let pageLength: number
@@ -142,11 +142,11 @@
 			</PaginationItem>
 		</li>
 		{#each pages as { name, href, active }}
-			<li class="shrink">
+			<li class="shrink border-none">
 				<PaginationItem {active} on:click={() => navigate(name)} {activeClass} {normalClass} {href}>{name}</PaginationItem>
 			</li>
 		{/each}
-		<li class="flex items-stretch shrink">
+		<li class="flex items-stretch shrink border-none">
 			<PaginationItem on:click={next} class={`${normalClass} rounded-r-md`}>
 				<ChevronRight size="1em" />
 			</PaginationItem>
