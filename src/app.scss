@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.discord-markdown {
+    blockquote {
+        @apply border-l-4 border-gray-200 dark:border-gray-700 pl-2 my-1;
+    }
+    
+    a {
+        @apply text-blue-600 dark:text-blue-400;
+
+        &:hover {
+            @apply underline
+        }
+    }
+
+    .d-emoji {
+        height: 1em;
+        width: auto;
+        display: inline;
+    }
+}

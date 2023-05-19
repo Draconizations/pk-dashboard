@@ -12,8 +12,18 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
+		"@popperjs/core": "^2.11.7",
+		"@sveltejs/adapter-node": "^1.2.3",
 		"@sveltejs/kit": "^1.5.0",
+		"@tabler/icons-svelte": "^2.17.0",
+		"@types/luxon": "^3.3.0",
 		"autoprefixer": "^10.4.14",
+		"classnames": "^2.3.2",
+		"discord-markdown": "github:repository/discord-markdown#b9608feef6856c9baa68f96c932a25c1d2bc55c2",
+		"flowbite": "^1.6.5",
+		"flowbite-svelte": "^0.34.9",
+		"highlight.js": "^11.8.0",
+		"luxon": "^3.3.0",
 		"postcss": "^8.4.23",
 		"prettier": "^2.8.0",
 		"prettier-plugin-svelte": "^2.8.1",
@@ -23,15 +33,7 @@
 		"tailwindcss": "^3.3.1",
 		"tslib": "^2.4.1",
 		"typescript": "^5.0.0",
-		"vite": "^4.2.0",
-		"@popperjs/core": "^2.11.7",
-		"@sveltejs/adapter-node": "^1.2.3",
-		"@tabler/icons-svelte": "^2.17.0",
-		"classnames": "^2.3.2",
-		"flowbite": "^1.6.5",
-		"flowbite-svelte": "^0.34.9"
+		"vite": "^4.2.0"
 	},
-	"type": "module",
-	"dependencies": {
-	}
+	"type": "module"
 }
