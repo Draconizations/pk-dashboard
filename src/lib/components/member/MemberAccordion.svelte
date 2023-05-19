@@ -32,6 +32,7 @@
                     ({member.id})
                 </span>
             </div>
+            <Icon url={member.avatar_url} />
         </div>
     </button>
     <div class={`flex flex-col border-t border-gray-300 dark:border-gray-600 mt-2 -mx-4 -mb-4 p-5 ${!open ? "hidden" : ""}`}>
