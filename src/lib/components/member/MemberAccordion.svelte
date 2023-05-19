@@ -29,7 +29,7 @@
 <div class="w-full border-t border-gray-300 dark:border-gray-600 p-4 first:border-0 flex">
     <button on:click={toggle} class="grow -m-4 p-4">
         <div class="flex justify-between items-center w-full">
-            <div class="flex items-center text-lg">
+            <div class="flex items-center text-lg flex-wrap">
                 {#if member.privacy && member.privacy.visibility === "public"}
                     <IconUser class="mr-2" />
                 {:else}
