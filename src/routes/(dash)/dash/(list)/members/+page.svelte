@@ -23,6 +23,17 @@
 
     $: currentMembers = paginateList(filteredMembers, activePage, options.pageLength)
 
+    let open: Record<string, boolean> = {}
+
+    const toggleOpen = (event: CustomEvent<{
+        member: string,
+        state: boolean
+    }>) => {
+        let index = event.detail.member
+
+        open[index] = open[index] || false
+        open[index] = event.detail.state
+    }
 </script>
 
 <div class="w-full lg:w-1/2 xl:w-1/3">
@@ -33,5 +44,5 @@
     </div>
 </div>
 <div class="w-full lg:w-1/2 xl:w-2/3">
-    <MemberList members={currentMembers} />
+    <MemberList members={currentMembers} on:open={(event) => toggleOpen(event)} {open} />
 </div>

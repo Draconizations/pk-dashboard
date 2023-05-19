@@ -1,13 +1,23 @@
 <script lang="ts">
+    import { fly } from "svelte/transition";
+    import { createEventDispatcher } from "svelte";
 	import parseMarkdown from "$lib/api/parse-markdown"
 	import type { Member } from "$lib/api/types"
 	import { IconLock, IconUser } from "@tabler/icons-svelte"
 	import AwaitHtml from "../common/AwaitHtml.svelte"
+	import Icon from "../common/Icon.svelte"
 
     export let member: Member
-    export let open: boolean = false
 
-    const toggle = () => open = !open
+    export let open = false
+
+    const dispatch = createEventDispatcher()
+    const toggle = () => {
+        dispatch("open", {
+            member: member.uuid || "abcde",
+            state: !open
+        })
+    }
 
     let parsedDescription: Promise<string> = Promise.resolve("(no description)")
     $: if (member.description) {
@@ -16,9 +26,9 @@
 
 </script>
 
-<div class="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-4 text-gray-900 dark:text-gray-100 mb-2">
-    <button on:click={toggle}>
-        <div class="flex justify-between items-center">
+<div class="w-full border-t border-gray-300 dark:border-gray-600 p-4 first:border-0 flex">
+    <button on:click={toggle} class="grow -m-4 p-4">
+        <div class="flex justify-between items-center w-full">
             <div class="flex items-center text-lg">
                 {#if member.privacy && member.privacy.visibility === "public"}
                     <IconUser class="mr-2" />
@@ -35,9 +45,14 @@
             <Icon url={member.avatar_url} />
         </div>
     </button>
-    <div class={`flex flex-col border-t border-gray-300 dark:border-gray-600 mt-2 -mx-4 -mb-4 p-5 ${!open ? "hidden" : ""}`}>
-        <div class="discord-markdown">
-            <AwaitHtml htmlPromise={parsedDescription} />
-        </div>
+</div>
+{#if open}
+<div class="flex flex-col border-t border-gray-300 dark:border-gray-600 p-5"
+    style={`border-left: 4px solid #${member.color}`}
+    in:fly={{duration: 600}}
+>
+    <div class="discord-markdown">
+        <AwaitHtml htmlPromise={parsedDescription} />
     </div>
 </div>
+{/if}
