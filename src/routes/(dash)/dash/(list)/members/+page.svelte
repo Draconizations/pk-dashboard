@@ -45,4 +45,7 @@
 </div>
 <div class="w-full xl:w-2/3">
     <MemberList members={currentMembers} on:open={(event) => toggleOpen(event)} {open} />
+    <div class="w-full flex justify-center mt-3">
+        <Pagination listLength={filteredMembers.length} pageLength={options.pageLength} bind:activePage />
+    </div>
 </div>

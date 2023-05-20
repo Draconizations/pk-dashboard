@@ -38,7 +38,7 @@
         } else if (currentPage - 2 > 1) {
 			pages.push({
                 name: (currentPage - 2).toString(),
-                href: getSearchParamUrl(currentPage - 2),
+                href: getSearchParamUrl(currentPage),
                 active: false
             })
 		}
@@ -46,7 +46,7 @@
 		if (currentPage - 1 > 1) {
             pages.push({
                 name: (currentPage - 1).toString(),
-                href: getSearchParamUrl(currentPage - 1),
+                href: getSearchParamUrl(currentPage),
                 active: false
             })
         }
@@ -62,7 +62,7 @@
 		if (currentPage + 1 < pageAmount) {
             pages.push({
                 name: (currentPage + 1).toString(),
-                href: getSearchParamUrl(currentPage + 1),
+                href: getSearchParamUrl(currentPage),
                 active: false
             })
         }
@@ -76,7 +76,7 @@
         } else if (currentPage + 2 < pageAmount) {
 			pages.push({
                 name: (currentPage + 2).toString(),
-                href: getSearchParamUrl(currentPage + 2),
+                href: getSearchParamUrl(currentPage),
                 active: false
             })
 		}
@@ -88,8 +88,6 @@
 				active: currentPage === pageAmount
 			})
 		}
-
-        if (activePage > pageAmount) activePage = 1
 
 		return pages
 	}
@@ -129,7 +127,6 @@
         }
 
         const aaa = parseInt(number)
-        goto(getSearchParamUrl(aaa))
         activePage = aaa
     }
 </script>
