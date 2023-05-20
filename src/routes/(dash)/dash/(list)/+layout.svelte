@@ -10,6 +10,6 @@
     setContext("members", members)
 </script>
 
-<div class="flex flex-col lg:flex-row gap-4">
+<div class="flex flex-col xl:flex-row gap-4">
     <slot/>
 </div>

@@ -36,13 +36,13 @@
     }
 </script>
 
-<div class="w-full lg:w-1/2 xl:w-1/3">
+<div class="w-full xl:w-1/3">
     <MemberListControl bind:options />
     
     <div class="w-full flex justify-center mt-3">
         <Pagination listLength={filteredMembers.length} pageLength={options.pageLength} bind:activePage />
     </div>
 </div>
-<div class="w-full lg:w-1/2 xl:w-2/3">
+<div class="w-full xl:w-2/3">
     <MemberList members={currentMembers} on:open={(event) => toggleOpen(event)} {open} />
 </div>
