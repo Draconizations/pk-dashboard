@@ -14,6 +14,7 @@
 </script>
 
 
+{#key pageUrl}
 <div class="flex flex-wrap mb-4 mx-auto justify-center">
     <Button 
         href={baseurl} 
@@ -40,3 +41,4 @@
         Groups
     </Button>
 </div>
+{/key}

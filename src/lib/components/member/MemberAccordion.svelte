@@ -8,11 +8,13 @@
 	import Icon from "../common/Icon.svelte"
 	import MemberInfoSection from "../common/InfoSection.svelte"
 	import Banner from "../common/Banner.svelte"
-	import { Tooltip } from "flowbite-svelte"
+	import { Button, Tooltip } from "flowbite-svelte"
+	import MemberGroupView from "./MemberGroupView.svelte"
 
     export let member: Member
 
     export let open = false
+    let mode: "view" | "edit" | "groups" = "view"
 
     const dispatch = createEventDispatcher()
     const toggle = () => {
@@ -57,29 +59,37 @@
     </button>
 </div>
 {#if open}
-<div class="flex flex-col border-t border-gray-300 dark:border-gray-600 p-5"
-    style={`border-left: 4px solid #${member.color}`}
-    in:fly={{duration: 600}}
->
-    <div class="info member-info flex flex-wrap -m-2">
-        <!-- general member information -->
-        <MemberInfoSection title="ID" field={member.id} type="plain"/>
-        <MemberInfoSection title="Name" field={member.name}  type="html"/>
-        <MemberInfoSection title="Display Name" field={member.display_name} type="html"/>
-        <MemberInfoSection title="Pronouns" field={member.pronouns} type="html"/>
-        <MemberInfoSection title="Color" field={member.color} type="plain" />
-        <MemberInfoSection title="Birthday" field={member.birthday} type="date"/>
-        <MemberInfoSection title="Created" field={member.created} type="date"/>
-        <MemberInfoSection title="Main Avatar" checks={member.webhook_avatar_url} field={member.avatar_url} type="image"/>
-    </div>
-    <hr class="border-gray-200 dark:border-gray-700 my-4"/>
-    <b>Description:</b>
-    <div class="discord-markdown">
-        <AwaitHtml htmlPromise={parsedDescription} />
-    </div>
-    {#if member.banner}
+    <div class="flex flex-col border-t border-gray-300 dark:border-gray-600 p-5"
+        style={`border-left: 4px solid #${member.color}`}
+        in:fly={{duration: 600}}
+    >
+    {#if mode === "view"}
+        <div class="info member-info flex flex-wrap -m-2">
+            <!-- general member information -->
+            <MemberInfoSection title="ID" field={member.id} type="plain"/>
+            <MemberInfoSection title="Name" field={member.name}  type="html"/>
+            <MemberInfoSection title="Display Name" field={member.display_name} type="html"/>
+            <MemberInfoSection title="Pronouns" field={member.pronouns} type="html"/>
+            <MemberInfoSection title="Color" field={member.color} type="plain" />
+            <MemberInfoSection title="Birthday" field={member.birthday} type="date"/>
+            <MemberInfoSection title="Created" field={member.created} type="date"/>
+            <MemberInfoSection title="Main Avatar" checks={member.webhook_avatar_url} field={member.avatar_url} type="image"/>
+        </div>
         <hr class="border-gray-200 dark:border-gray-700 my-4"/>
-        <Banner url={member.banner} />
-    {/if}
-</div>
+        <b>Description:</b>
+        <div class="discord-markdown">
+            <AwaitHtml htmlPromise={parsedDescription} />
+        </div>
+        {#if member.banner}
+            <hr class="border-gray-200 dark:border-gray-700 my-4"/>
+            <Banner url={member.banner} />
+        {/if}
+        <hr class="border-gray-200 dark:border-gray-700 my-4"/>
+        <div class="flex flex-wrap">
+            <Button color="light" on:click={() => mode = "groups"}>View groups</Button>
+        </div>
+        {:else if mode === "groups"}
+            <MemberGroupView {member} bind:mode />
+        {/if}
+    </div>
 {/if}
