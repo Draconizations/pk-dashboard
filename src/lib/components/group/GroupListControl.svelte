@@ -1,13 +1,13 @@
 <script lang="ts">
-    import type { MemberListOptions } from "$lib/utils/list"
+    import type { GroupListOptions } from "$lib/utils/list"
     import { IconSearch } from "@tabler/icons-svelte";
 	import { Input, Label } from "flowbite-svelte"
 
-    export let options: MemberListOptions
+    export let options: GroupListOptions
 </script>
 
 <h3 class="text-xl mb-2 text-gray-900 dark:text-gray-100">
-    <IconSearch class="inline"/> Search Members
+    <IconSearch class="inline"/> Search Groups
 </h3>
 <div class="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-4 text-gray-900 dark:text-gray-100">
     <Label for="quick-name-search" class="mb-1" >Quick Search</Label>

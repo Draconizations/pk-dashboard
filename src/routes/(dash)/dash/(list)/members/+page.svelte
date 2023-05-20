@@ -5,18 +5,18 @@
 	import MemberListControl from "$lib/components/member/MemberListControl.svelte"
 	import type { Member } from "$lib/api/types"
     import { filterMemberList, paginateList } from "$lib/utils/list"
-    import type { ListOptions } from "$lib/utils/list"
+    import type { MemberListOptions } from "$lib/utils/list"
 	import Pagination from "$lib/components/Pagination.svelte";
 
     const members: any = getContext("members")
-    let options: ListOptions = {
+    let options: MemberListOptions = {
         pageLength: 25,
         search: {
             name: ""
         }
     }
 
-   let activePage = parseInt($page.url.searchParams.get('page') || "1")
+    let activePage = parseInt($page.url.searchParams.get('page') || "1")
 
     $members.sort((a: Member, b: Member) => b.name && a.name?.localeCompare(b.name) || 0)
     $: filteredMembers = filterMemberList($members, options)

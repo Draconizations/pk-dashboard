@@ -1,9 +1,9 @@
 <script lang="ts">
 	import parseMarkdown from "$lib/api/parse-markdown"
     import { DateTime } from "luxon";
-	import AwaitHtml from "../common/AwaitHtml.svelte"
+	import AwaitHtml from "./AwaitHtml.svelte"
 	import { Button } from "flowbite-svelte"
-	import Modal from "../common/Modal.svelte"
+	import Modal from "./Modal.svelte"
 
     export let title: string
     export let field: string | undefined

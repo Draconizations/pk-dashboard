@@ -6,7 +6,7 @@
 	import { IconLock, IconStarFilled, IconUser } from "@tabler/icons-svelte"
 	import AwaitHtml from "../common/AwaitHtml.svelte"
 	import Icon from "../common/Icon.svelte"
-	import MemberInfoSection from "./MemberInfoSection.svelte"
+	import MemberInfoSection from "../common/InfoSection.svelte"
 	import Banner from "../common/Banner.svelte"
 	import { Tooltip } from "flowbite-svelte"
 
