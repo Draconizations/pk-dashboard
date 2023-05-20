@@ -13,7 +13,7 @@
     use:focusTrap={true}
     on:click|stopPropagation={() => open = false} 
     on:keydown|stopPropagation={(event) => escapeModal(event)} 
-    class="fixed top-0 bottom-0 left-0 right-0 bg-black bg-opacity-60 p-5 w-full flex column items-center justify-center"
+    class="fixed top-0 bottom-0 left-0 right-0 bg-black bg-opacity-60 p-5 w-full flex column items-center justify-center z-10"
 >
     <!-- svelte-ignore a11y-autofocus -->
     <button

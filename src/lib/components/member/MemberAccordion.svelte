@@ -3,10 +3,12 @@
     import { createEventDispatcher } from "svelte";
 	import parseMarkdown from "$lib/api/parse-markdown"
 	import type { Member } from "$lib/api/types"
-	import { IconLock, IconUser } from "@tabler/icons-svelte"
+	import { IconLock, IconStarFilled, IconUser } from "@tabler/icons-svelte"
 	import AwaitHtml from "../common/AwaitHtml.svelte"
 	import Icon from "../common/Icon.svelte"
 	import MemberInfoSection from "./MemberInfoSection.svelte"
+	import Banner from "../common/Banner.svelte"
+	import { Tooltip } from "flowbite-svelte"
 
     export let member: Member
 
@@ -43,7 +45,14 @@
                     ({member.id})
                 </span>
             </div>
-            <Icon url={member.avatar_url} />
+            {#if member.webhook_avatar_url}
+                <Icon url={member.webhook_avatar_url}>
+                    <IconStarFilled class="icon-outlined" size={20} />
+                    <Tooltip placement="bottom">This member has a Proxy Avatar set</Tooltip>
+                </Icon>
+            {:else}
+                <Icon url={member.avatar_url} />
+            {/if}
         </div>
     </button>
 </div>
@@ -54,18 +63,23 @@
 >
     <div class="info member-info flex flex-wrap -m-2">
         <!-- general member information -->
-        <MemberInfoSection title="ID" field={member.id}/>
-        <MemberInfoSection title="Name" field={member.name} html={true}/>
-        <MemberInfoSection title="Display Name" field={member.display_name} html={true}/>
-        <MemberInfoSection title="Pronouns" field={member.pronouns} html={true}/>
-        <MemberInfoSection title="Color" field={member.color} />
-        <MemberInfoSection title="Birthday" field={member.birthday} date={true}/>
-        <MemberInfoSection title="Created" field={member.created} date={true}/>
+        <MemberInfoSection title="ID" field={member.id} type="plain"/>
+        <MemberInfoSection title="Name" field={member.name}  type="html"/>
+        <MemberInfoSection title="Display Name" field={member.display_name} type="html"/>
+        <MemberInfoSection title="Pronouns" field={member.pronouns} type="html"/>
+        <MemberInfoSection title="Color" field={member.color} type="plain" />
+        <MemberInfoSection title="Birthday" field={member.birthday} type="date"/>
+        <MemberInfoSection title="Created" field={member.created} type="date"/>
+        <MemberInfoSection title="Main Avatar" checks={member.webhook_avatar_url} field={member.avatar_url} type="image"/>
     </div>
     <hr class="border-gray-200 dark:border-gray-700 my-4"/>
     <b>Description:</b>
     <div class="discord-markdown">
         <AwaitHtml htmlPromise={parsedDescription} />
     </div>
+    {#if member.banner}
+        <hr class="border-gray-200 dark:border-gray-700 my-4"/>
+        <Banner url={member.banner} />
+    {/if}
 </div>
 {/if}

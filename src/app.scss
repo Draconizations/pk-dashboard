@@ -21,3 +21,25 @@
         display: inline;
     }
 }
+
+.icon-outlined {
+    overflow: visible;
+    transform: scale(1);
+    path {
+        stroke: white;
+        stroke-width: 4px;
+        stroke-linejoin: round;
+        paint-order: stroke;
+    }
+}
+
+.dark .icon-outlined {
+    overflow: visible;
+    transform: scale(1);
+    path {
+        stroke: #111827;
+        stroke-width: 6px;
+        stroke-linejoin: round;
+        paint-order: stroke;
+    }
+}
