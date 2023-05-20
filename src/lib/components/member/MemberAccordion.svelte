@@ -6,6 +6,7 @@
 	import { IconLock, IconUser } from "@tabler/icons-svelte"
 	import AwaitHtml from "../common/AwaitHtml.svelte"
 	import Icon from "../common/Icon.svelte"
+	import MemberInfoSection from "./MemberInfoSection.svelte"
 
     export let member: Member
 
@@ -51,6 +52,18 @@
     style={`border-left: 4px solid #${member.color}`}
     in:fly={{duration: 600}}
 >
+    <div class="info member-info flex flex-wrap -m-2">
+        <!-- general member information -->
+        <MemberInfoSection title="ID" field={member.id}/>
+        <MemberInfoSection title="Name" field={member.name} html={true}/>
+        <MemberInfoSection title="Display Name" field={member.display_name} html={true}/>
+        <MemberInfoSection title="Pronouns" field={member.pronouns} html={true}/>
+        <MemberInfoSection title="Color" field={member.color} />
+        <MemberInfoSection title="Birthday" field={member.birthday} date={true}/>
+        <MemberInfoSection title="Created" field={member.created} date={true}/>
+    </div>
+    <hr class="border-gray-200 dark:border-gray-700 my-4"/>
+    <b>Description:</b>
     <div class="discord-markdown">
         <AwaitHtml htmlPromise={parsedDescription} />
     </div>
