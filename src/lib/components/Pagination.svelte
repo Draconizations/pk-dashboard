@@ -88,6 +88,8 @@
 				active: currentPage === pageAmount
 			})
 		}
+		
+        if (activePage > pageAmount) activePage = 1
 
 		return pages
 	}
