@@ -3,6 +3,7 @@ import type { Actions, PageServerLoad } from "./$types";
 import { login } from "$lib/api/functions";
 import type { ApiError } from "$lib/api";
 import type { System } from "$lib/api/types";
+import { env } from "$env/dynamic/private";
 
 export const load: PageServerLoad = async ({ cookies }) => {
     const token = cookies.get("pk-token")
@@ -31,6 +32,7 @@ export const actions: Actions = {
             cookies.set("colorTheme", theme, {
                 path: "/",
                 maxAge: 60 * 60 * 24 * 365,
+                secure: env.NODE_ENV !== "development",
             })
         }
 
@@ -44,7 +46,8 @@ export const actions: Actions = {
         if (!token) return fail(400, { missing: true })
 
         cookies.set("pk-token", token as string, {
-            path: "/"
+            path: "/",
+            secure: env.NODE_ENV !== "development",
         })
         
         await login(token as string, cookies)
@@ -54,10 +57,12 @@ export const actions: Actions = {
 
     logout: async ({ cookies}) => {
         cookies.delete("pk-token", {
-            path: "/"
+            path: "/",
+            secure: env.NODE_ENV !== "development",
         })
         cookies.delete("pk-user", {
-            path: "/"
+            path: "/",
+            secure: env.NODE_ENV !== "development",
         })
 
         throw redirect(302, "/")
