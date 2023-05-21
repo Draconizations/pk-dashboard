@@ -49,3 +49,7 @@
         <Pagination listLength={filteredGroups.length} pageLength={options.pageLength} bind:activePage />
     </div>
 </div>
+
+<svelte:head>
+    <title>PluralKit | dash</title>
+</svelte:head>
