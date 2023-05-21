@@ -103,5 +103,5 @@
 <hr class="border-gray-200 dark:border-gray-700 my-4"/>
 <div class="flex flex-wrap gap-2">
     <Button disabled={!changed || invalid || loading} on:click={() => submit()} >Submit </Button>
-    <Button disabled={loading || invalid} color="red" on:click={() => mode = "view"}>Discard Edit</Button>
+    <Button disabled={loading || invalid} color="light" on:click={() => mode = "view"}>Discard Edit</Button>
 </div>
