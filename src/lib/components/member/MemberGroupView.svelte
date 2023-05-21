@@ -45,6 +45,8 @@
     
     async function submit() {
         loading = true
+        err = ""
+        success = false
 
         const data = relevantGroups.map(g => g.uuid)
 
@@ -88,21 +90,27 @@
             <h4 class="text-lg"><IconBoxMultiple class="inline" /> Groups</h4>
             <span>({relevantGroups.length} groups)</span>
         </span>
+        {#if relevantGroups.length > 0}
         <Listgroup>
             {#each list as item (item.uuid)}
             <ListgroupItem class="hover:text-black hover:dark:text-white bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 hover:dark:bg-gray-700">
                 <div class="flex justify-between items-center">
-                    <a href={item.href} class="flex flex-col md:flex-row justify-between">
+                    <div class="flex flex-col md:flex-row justify-between w-full">
                         <span><b>{item.name}</b> ({item.id})</span>
+                        {#if item.display_name}
                         <span class="mt-2 md:mt-0">{item.display_name}</span>
-                    </a>
-                    <button class="text-red-700 dark:text-red-500" on:click|stopPropagation={() => removeGroup(item.uuid)}>
+                        {/if}
+                    </div>
+                    <button class="text-red-700 dark:text-red-500 pl-4" on:click|stopPropagation={() => removeGroup(item.uuid || "abcde")}>
                         <IconTrash class="inline"/>
                     </button>
                 </div>
             </ListgroupItem>
             {/each}
         </Listgroup>
+        {:else}
+            <p>This member has no groups yet! You can add some in this menu.</p>
+        {/if}
     </div>
     <div class="flex flex-col p-2 w-full lg:w-1/3">
         <GroupPicker groups={$groups} bind:value={relevantGroups} />
@@ -111,5 +119,5 @@
 <hr class="border-gray-200 dark:border-gray-700 my-4"/>
 <div class="flex flex-wrap gap-2">
     <Button disabled={!changed || loading} on:click={() => submit()} >Submit </Button>
-    <Button disabled={loading} color="light" on:click={() => mode = "view"}>Discard Edit</Button>
+    <Button disabled={loading} color="light" on:click={() => mode = "view"}>Go back</Button>
 </div>

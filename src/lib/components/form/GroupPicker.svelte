@@ -13,8 +13,8 @@
         group?: Group
     })[] = []
 
-    let buttonClass = "py-1 px-2 w-full border-b border-gray-200 dark:border-gray-700 last:border-b-0 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800 hover:dark:text-white hover:text-black focus-visible:outline-none focus:bg-blue-100 text-black hover:dark:bg-blue-800 hover:bg-blue-200 focus:dark:bg-blue-900"
-    let inputClass = "mb-2 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-900 dark:placeholder-gray-400 dark:text-white  border border-gray-200 dark:border-gray-600 p-2.5 text-sm focus-visible:outline-none focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-blue-500 dark:focus:border-blue-500 resize-none"
+    let buttonClass = "p-3 w-full border-b border-gray-200 dark:border-gray-700 last:border-b-0 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800 hover:dark:text-white hover:text-black focus-visible:outline-none focus:bg-blue-100 text-black hover:dark:bg-blue-800 hover:bg-blue-200 focus:dark:bg-blue-900"
+    let inputClass = "mb-4 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-900 dark:placeholder-gray-400 dark:text-white  border border-gray-200 dark:border-gray-600 p-2.5 text-sm focus-visible:outline-none focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-blue-500 dark:focus:border-blue-500 resize-none"
     let activeClass = "bg-blue-100 text-black dark:text-white hover:dark:bg-blue-800 hover:bg-blue-200 dark:bg-blue-900"
 
     function addGroup(index: number) {
@@ -130,5 +130,5 @@
     .no-scrollbar {
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */
-}
+    }
 </style>
