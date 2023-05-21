@@ -25,10 +25,15 @@
 	.container {
 		position: relative;
 	}
+
+	pre {
+		white-space: pre-wrap;
+		font-size: 0.875rem;
+	}
 	
 	pre, textarea {
 		font-family: inherit;
-		padding: 0.5em;
+		padding: 0.625rem;
 		line-height: 1.5;
 		overflow: hidden;
 	}
