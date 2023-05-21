@@ -18,7 +18,7 @@
 
     let activePage = parseInt($page.url.searchParams.get('page') || "1")
 
-    $groups.sort((a: Group, b: Group) => b.name && a.name?.localeCompare(b.name) || 0)
+    $: $groups.sort((a: Group, b: Group) => b.name && a.name?.localeCompare(b.name) || 0)
     $: filteredGroups = filterGroupList($groups, options)
 
     $: currentGroups = paginateList(filteredGroups, activePage, options.pageLength)

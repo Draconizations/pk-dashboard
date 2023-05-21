@@ -21,7 +21,7 @@ export interface ApiError {
 }
 
 
-export default async function<T>(path: string, options?: APIOptions): Promise<T> {
+export default async function<T>(path: string, options?: APIOptions): Promise<T|undefined> {
     const resp = await fetch(`https://api.pluralkit.me/v2/${path}`, {
         method: options && options.method || "GET",
         headers: {
@@ -33,6 +33,8 @@ export default async function<T>(path: string, options?: APIOptions): Promise<T>
     })
 
     if (!resp.ok) await parseError(resp)
+
+    if (resp.status === 204) return
 
     const data = await resp.json()
     return data;
