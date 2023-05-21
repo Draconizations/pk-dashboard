@@ -10,6 +10,7 @@
 	import Banner from "../common/Banner.svelte"
 	import { Button, Tooltip } from "flowbite-svelte"
 	import MemberGroupView from "./MemberGroupView.svelte"
+	import MemberEditView from "./MemberEditView.svelte"
 
     export let member: Member
 
@@ -63,31 +64,33 @@
         style={`border-left: 4px solid #${member.color}`}
         in:fly={{duration: 600}}
     >
-    {#if mode === "view"}
-        <div class="info member-info flex flex-wrap -m-2">
-            <!-- general member information -->
-            <MemberInfoSection title="ID" field={member.id} type="plain"/>
-            <MemberInfoSection title="Name" field={member.name}  type="html"/>
-            <MemberInfoSection title="Display Name" field={member.display_name} type="html"/>
-            <MemberInfoSection title="Pronouns" field={member.pronouns} type="html"/>
-            <MemberInfoSection title="Color" field={member.color} type="plain" />
-            <MemberInfoSection title="Birthday" field={member.birthday} type="date"/>
-            <MemberInfoSection title="Created" field={member.created} type="date"/>
-            <MemberInfoSection title="Main Avatar" checks={member.webhook_avatar_url} field={member.avatar_url} type="image"/>
-        </div>
-        <hr class="border-gray-200 dark:border-gray-700 my-4"/>
-        <b>Description:</b>
-        <div class="discord-markdown">
-            <AwaitHtml htmlPromise={parsedDescription} />
-        </div>
-        {#if member.banner}
+        {#if mode === "view"}
+            <div class="info member-info flex flex-wrap -m-2">
+                <!-- general member information -->
+                <MemberInfoSection title="ID" field={member.id} type="plain"/>
+                <MemberInfoSection title="Name" field={member.name}  type="html"/>
+                <MemberInfoSection title="Display Name" field={member.display_name} type="html"/>
+                <MemberInfoSection title="Pronouns" field={member.pronouns} type="html"/>
+                <MemberInfoSection title="Color" field={member.color} type="plain" />
+                <MemberInfoSection title="Birthday" field={member.birthday} type="date"/>
+                <MemberInfoSection title="Created" field={member.created} type="date"/>
+                <MemberInfoSection title="Main Avatar" checks={member.webhook_avatar_url} field={member.avatar_url} type="image"/>
+            </div>
             <hr class="border-gray-200 dark:border-gray-700 my-4"/>
-            <Banner url={member.banner} />
-        {/if}
-        <hr class="border-gray-200 dark:border-gray-700 my-4"/>
-        <div class="flex flex-wrap">
-            <Button color="light" on:click={() => mode = "groups"}>View groups</Button>
-        </div>
+            <b>Description:</b>
+            <div class="discord-markdown">
+                <AwaitHtml htmlPromise={parsedDescription} />
+            </div>
+            {#if member.banner}
+                <hr class="border-gray-200 dark:border-gray-700 my-4"/>
+                <Banner url={member.banner} />
+            {/if}
+            <hr class="border-gray-200 dark:border-gray-700 my-4"/>
+            <div class="flex flex-wrap gap-2">
+                <Button on:click={() => mode = "edit"}>Edit</Button> <Button color="light" on:click={() => mode = "groups"}>View groups</Button>
+            </div>
+        {:else if mode === "edit"}
+            <MemberEditView {member} bind:mode />
         {:else if mode === "groups"}
             <MemberGroupView {member} bind:mode />
         {/if}

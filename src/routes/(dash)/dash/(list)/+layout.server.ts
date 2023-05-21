@@ -15,6 +15,7 @@ export const load: LayoutServerLoad = async ({ cookies }) => {
     })
 
     return {
+        token: token,
         members: members,
         groups: groups
     }

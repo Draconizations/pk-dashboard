@@ -7,8 +7,9 @@
     import { filterMemberList, paginateList } from "$lib/utils/list"
     import type { MemberListOptions } from "$lib/utils/list"
 	import Pagination from "$lib/components/Pagination.svelte";
+	import type { Writable } from "svelte/store"
 
-    const members: any = getContext("members")
+    let members = getContext<Writable<Member[]>>("members")
     let options: MemberListOptions = {
         pageLength: 25,
         search: {
@@ -18,7 +19,7 @@
 
     let activePage = parseInt($page.url.searchParams.get('page') || "1")
 
-    $members.sort((a: Member, b: Member) => b.name && a.name?.localeCompare(b.name) || 0)
+    $: $members.sort((a: Member, b: Member) => b.name && a.name?.localeCompare(b.name) || 0)
     $: filteredMembers = filterMemberList($members, options)
 
     $: currentMembers = paginateList(filteredMembers, activePage, options.pageLength)
