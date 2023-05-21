@@ -10,6 +10,7 @@
 	import Banner from "../common/Banner.svelte"
 	import GroupMemberView from "./GroupMemberView.svelte"
 	import { Button } from "flowbite-svelte"
+	import GroupEditView from "./GroupEditView.svelte"
 
     export let group: Group
 
@@ -75,9 +76,11 @@
                 <Banner url={group.banner} />
             {/if}
             <hr class="border-gray-200 dark:border-gray-700 my-4"/>
-            <div class="flex flex-wrap">
-                <Button color="light" on:click={() => mode = "members"}>View members</Button>
+            <div class="flex flex-wrap gap-2">
+                <Button on:click={() => mode = "edit"}>Edit</Button> <Button color="light" on:click={() => mode = "members"}>View members</Button>
             </div>
+        {:else if mode === "edit"}
+            <GroupEditView {group} bind:mode />
         {:else if mode === "members"}
             <GroupMemberView {group} bind:mode />
         {/if}
