@@ -93,8 +93,8 @@
         {#if relevantGroups.length > 0}
         <Listgroup>
             {#each list as item (item.uuid)}
-            <ListgroupItem class="hover:text-black hover:dark:text-white bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 hover:dark:bg-gray-700">
-                <div class="flex justify-between items-center">
+            <ListgroupItem class="hover:text-black dark:text-gray-100 hover:dark:text-white bg-white text-gray-900 dark:bg-gray-900 hover:bg-gray-100 hover:dark:bg-gray-800">
+                <div class="flex justify-between items-center p-1">
                     <div class="flex flex-col md:flex-row justify-between w-full">
                         <span><b>{item.name}</b> ({item.id})</span>
                         {#if item.display_name}
@@ -119,5 +119,5 @@
 <hr class="border-gray-200 dark:border-gray-700 my-4"/>
 <div class="flex flex-wrap gap-2">
     <Button disabled={!changed || loading} on:click={() => submit()} >Submit </Button>
-    <Button disabled={loading} color="light" on:click={() => mode = "view"}>Go back</Button>
+    <Button disabled={loading} color="light" on:click={() => mode = "view"}>Cancel</Button>
 </div>

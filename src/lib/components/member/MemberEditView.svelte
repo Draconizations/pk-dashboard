@@ -125,5 +125,5 @@
 <hr class="border-gray-200 dark:border-gray-700 my-4"/>
 <div class="flex flex-wrap gap-2">
     <Button disabled={!changed || Object.keys(invalid).some(i => invalid[i] === true) || loading} on:click={() => submit()} >Submit </Button>
-    <Button disabled={loading} color="light" on:click={() => mode = "view"}>Discard Edit</Button>
+    <Button disabled={loading} color="light" on:click={() => mode = "view"}>Cancel</Button>
 </div>

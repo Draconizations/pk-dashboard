@@ -13,9 +13,9 @@
         group?: Group
     })[] = []
 
-    let buttonClass = "p-3 w-full border-b border-gray-200 dark:border-gray-700 last:border-b-0 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800 hover:dark:text-white hover:text-black focus-visible:outline-none focus:bg-blue-100 text-black hover:dark:bg-blue-800 hover:bg-blue-200 focus:dark:bg-blue-900"
+    let buttonClass = "p-3 w-full border-b border-gray-200 dark:border-gray-700 last:border-b-0 dark:text-gray-200 dark:hover:bg-gray-800 hover:dark:text-white hover:text-black focus-visible:outline-none focus:bg-blue-100 text-black hover:dark:bg-blue-800 hover:bg-blue-100 focus:dark:bg-blue-900"
     let inputClass = "mb-4 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-900 dark:placeholder-gray-400 dark:text-white  border border-gray-200 dark:border-gray-600 p-2.5 text-sm focus-visible:outline-none focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-blue-500 dark:focus:border-blue-500 resize-none"
-    let activeClass = "bg-blue-100 text-black dark:text-white hover:dark:bg-blue-800 hover:bg-blue-200 dark:bg-blue-900"
+    let activeClass = "bg-blue-200 text-black dark:text-white hover:dark:bg-blue-800 hover:bg-blue-200 dark:bg-blue-900"
 
     function addGroup(index: number) {
         if (value.filter(g => g.uuid === members[index].uuid)[0]) {
@@ -110,12 +110,12 @@
 
 <input class={inputClass} placeholder="Type to search..." bind:value={input} on:input={() => searchGroups()} on:keydown={(event) => moveAround(event)} />
 
-<div class="grow h-72 border rounded-md border-gray-200 dark:border-gray-700 overflow-auto no-scrollbar">
+<div class="grow h-72 max-h-96 border rounded-md border-gray-200 dark:border-gray-700 overflow-auto no-scrollbar">
     {#each members as member, index (member.uuid)}
         <button
             on:click={() => addGroup(index)}
             bind:this={elements[index]}
-            class={`${buttonClass} ${elements[index] && elements[index].active === true ? activeClass : ""} ${!value.filter(g => g.uuid === member.uuid)[0] ? "" : `bg-gray-400 dark:bg-gray-600 dark:text-gray-400 text-700 hover:bg-red-400 hover:dark:bg-red-800 text-black hover:dark:text-white ${elements[index] && elements[index].active === true ? "bg-red-400 dark:bg-red-800 text-black dark:text-white" : ""}` }`}
+            class={`${buttonClass} ${elements[index] && elements[index].active === true ? activeClass : ""} ${!value.filter(g => g.uuid === member.uuid)[0] ? "" : `bg-gray-200 text-black dark:bg-gray-600 dark:text-gray-400 text-700 hover:bg-red-300 hover:dark:bg-red-800 hover:dark:text-white ${elements[index] && elements[index].active === true ? "bg-red-300 dark:bg-red-800 text-black dark:text-white" : ""}` }`}
         >
             <b>{member.name}</b> ({member.id})
         </button>
