@@ -5,8 +5,8 @@
     export let id: string
     export let placeholder = ""
 	
-	$: minHeight = `${1 + minRows * 1.2}em`
-	$: maxHeight = maxRows ? `${1 + maxRows * 1.2}em` : `auto`
+	$: minHeight = `${1 + minRows * 1.5}em`
+	$: maxHeight = maxRows ? `${1 + maxRows * 1.5}em` : `auto`
 
     let defaultClass = "w-full rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-900 dark:placeholder-gray-400 dark:text-white  border border-gray-200 dark:border-gray-600 p-2.5 text-sm focus-visible:outline-none focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-blue-500 dark:focus:border-blue-500 resize-none"
 </script>
@@ -28,7 +28,7 @@
 	pre, textarea {
 		font-family: inherit;
 		padding: 0.5em;
-		line-height: 1.2;
+		line-height: 1.5;
 		overflow: hidden;
 	}
 	
