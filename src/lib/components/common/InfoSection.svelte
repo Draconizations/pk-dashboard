@@ -17,6 +17,10 @@
         htmlPromise = parseMarkdown(field, { parseTimestamps: true, embed: true })
     }
 
+    $: if (field && type === "plain") {
+        htmlPromise = Promise.resolve(field || "")
+    }
+
     $: if (field && type === "date") {
         htmlPromise = Promise.resolve(parseDate(field))
     }
