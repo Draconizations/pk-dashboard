@@ -4,6 +4,7 @@
 	export let maxRows: number | undefined = undefined
     export let id: string
     export let placeholder = ""
+	export let maxLength: number = 1000
 	
 	$: minHeight = `${1 + minRows * 1.5}em`
 	$: maxHeight = maxRows ? `${1 + maxRows * 1.5}em` : `auto`
@@ -17,7 +18,7 @@
 		style="min-height: {minHeight}; max-height: {maxHeight}"
 	>{value + '\n'}</pre>
 
-	<textarea class={defaultClass} bind:value {id} {placeholder} ></textarea>	
+	<textarea class={defaultClass} bind:value {id} {placeholder} maxlength={maxLength} ></textarea>	
 </div>
 
 <style>
