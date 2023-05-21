@@ -22,7 +22,7 @@
 
 <div class="flex gap-1 items-center">
     <input class={`${defaultClass} w-full`} bind:value {placeholder} {id} />
-    <input class={`${defaultClass} h-9`} type="color" on:change={(event) => update(event)} />
+    <input class={`${defaultClass} h-9 w-1/3`} type="color" on:change={(event) => update(event)} />
 </div>
 {#if invalid}
     <span class="text-sm text-red-800 dark:text-red-500">Invalid hexcode. Use a 6-digit color (#ff0000)</span>
